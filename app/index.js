@@ -26,14 +26,7 @@ const Index=()=>{
         }
     }
     return(
-        <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          <TouchableOpacity
-              onPress={() => router.push('/reAuth')}
-              style={{backgroundColor: '#24292e',
-              padding: 15, borderRadius: 8}}>
-              <Text style={{color: 'white'}}>GitHub로 로그인</Text>
-          </TouchableOpacity>
-      </View>
+        <View/>
     )
 }
 export default Index

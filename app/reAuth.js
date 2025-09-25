@@ -56,7 +56,7 @@ const Index=()=>{ //디폴트함수
     return(
         <View>
             <TouchableOpacity onPress={goLogin}>
-                <Text>Button</Text>
+                <Text>please click Button to get token</Text>
             </TouchableOpacity>
         </View>
     )
