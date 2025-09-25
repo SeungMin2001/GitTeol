@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "scheme": "exp",
+    "plugins": [
+      "expo-router"
+    ],
+    "name": "gitteol-app",
+    "slug": "gitteol-app"
+  }
+}
