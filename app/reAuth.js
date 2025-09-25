@@ -41,7 +41,7 @@ const Index=()=>{ //디폴트함수
     const router=useRouter()
     useEffect(()=>{
         console.log("앱이 시작되었습니다!")
-        console.log("등록 중...!")
+        console.log("등록 중....!")
         Linking.getInitialURL().then(
             (url)=>{
                 if (url && url.includes('oauth/callback')){
