@@ -1,4 +1,5 @@
 //useSearchParams + useEffect(의존성) -> home.js에서 인증 다시하라 가능
+//토큰있으면 바로 home으로, 토큰없으면 login/reAuth로 가서 토큰받아옴
 import {View, Text, Linking, TouchableOpacity} from 'react-native'
 import {useRouter} from 'expo-router'
 import {useEffect,useState} from 'react'
@@ -22,7 +23,7 @@ const Index=()=>{
         }
         else{
             console.log('현재 index.js, 토큰없음')
-            router.replace('/reAuth') //토큰 없는경우 인증받으러 
+            router.replace('/login/reAuth') //토큰 없는경우 인증받으러 
         }
     }
     return(
