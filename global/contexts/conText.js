@@ -13,7 +13,7 @@ const UserProvider=({children})=>{
     }
     const getInfo=async ()=>{ // 토큰으로 깃허브 정보 가져오기
         try{
-            const username='Tae4an'
+            const username='SeungMin2001'
             const key=await getToken()
             const userData= await getUserInfo(key,username)
             setUserData(userData)
