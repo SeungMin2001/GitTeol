@@ -13,6 +13,7 @@ const Index=()=>{
     },[])
 
     const checkToken=async ()=>{
+        await SecureStore.deleteItemAsync("GITHUB_ACCESS_TOKEN")
         const token=await SecureStore.getItemAsync("GITHUB_ACCESS_TOKEN")
         if (token){
             console.log('현재 index.js, 토큰존재')

@@ -1,9 +1,9 @@
-import {View, Text, Linking, TouchableOpacity} from 'react-native'
+import {View, Text, Linking,Pressable ,TouchableOpacity} from 'react-native'
 import {useEffect,useState} from 'react'
 import {useRouter} from 'expo-router'
 import {GITHUB_CLIENT_SECRETS,GITHUB_CLIENT_ID} from '@env'
 import * as SecureStore from 'expo-secure-store' // access_token 저장하는곳
-import {getToken} from '../../api/code2token'
+import getToken from '../../api/code2token'
 
 const goLogin=()=>{
     const redirect_url='exp://localhost:8081/--/oauth/callback'
