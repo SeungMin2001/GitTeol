@@ -11,41 +11,10 @@ const goLogin=()=>{
     Linking.openURL(url)
 }
 
-const sendCodeToBackend=async (code,router)=>{  // 추출한 code를 backend로 전달
-    const result=await getToken(code)
-    console.log('토큰: ',result.access_token)//형변환이 아님, 데이터 받아오고 있기때문에 await
-    await SecureStore.setItemAsync("GITHUB_ACCESS_TOKEN",result.access_token) //key:value 형태로 저장. getItemAsync(key)로 가져올수있음
-    router.replace('/home')
-}
-
-const handleIncomingURL=async (event,router)=>{ //code 포함된 url 받아서 code만 추출하는 함수
-    console.log("받은 URL:", event.url)
-
-    const url=new URL(event.url)
-    const code=url.searchParams.get('code')
-
-    console.log("추출된 코드 :", code)
-    sendCodeToBackend(code,router)
-}
-
 const Index=()=>{ //디폴트함수
-    const router=useRouter()
-    useEffect(()=>{
-        console.log("앱이 시작되었습니다!")
-        console.log("등록 중....!")
-        Linking.getInitialURL().then(
-            (url)=>{
-                if (url && url.includes('oauth/callback')){
-                    console.log('callback 감지')
-                    handleIncomingURL({url},router)
-                }
-            }
-        )
-        console.log("등록 완료!")
-    },[])
-
     return( // 토큰이 없는상황이므로 깃허브 로그인 버튼을 만들어주는곳
         <View>
+            <Text>test</Text>
             <TouchableOpacity onPress={goLogin}>
                 <Text>please click Button to get token</Text>
             </TouchableOpacity>

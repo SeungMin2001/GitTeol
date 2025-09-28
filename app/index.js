@@ -2,8 +2,7 @@
 //토큰있으면 바로 home으로, 토큰없으면 login/reAuth로 가서 토큰받아옴
 import {View, Text, Linking, TouchableOpacity} from 'react-native'
 import {useRouter} from 'expo-router'
-import {useEffect,useState} from 'react'
-import {GITHUB_CLIENT_SECRETS,GITHUB_CLIENT_ID} from '@env'
+import {useEffect} from 'react'
 import * as SecureStore from 'expo-secure-store' // access_token 저장하는곳
 
 const Index=()=>{
@@ -13,7 +12,8 @@ const Index=()=>{
     },[])
 
     const checkToken=async ()=>{
-        //await SecureStore.deleteItemAsync("GITHUB_ACCESS_TOKEN")
+        //await SecureStore.deleteItemAsync("GITHUB_ACCESS_TOKEN") //일부러 제거하고 reAuth 라우팅 유도
+
         const token=await SecureStore.getItemAsync("GITHUB_ACCESS_TOKEN")
         if (token){
             console.log('현재 index.js, 토큰존재')
