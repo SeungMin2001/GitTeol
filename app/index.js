@@ -12,7 +12,7 @@ const Index=()=>{
     },[])
 
     const checkToken=async ()=>{
-        //await SecureStore.deleteItemAsync("GITHUB_ACCESS_TOKEN") //일부러 제거하고 reAuth 라우팅 유도
+        await SecureStore.deleteItemAsync("GITHUB_ACCESS_TOKEN") //일부러 제거하고 reAuth 라우팅 유도
 
         const token=await SecureStore.getItemAsync("GITHUB_ACCESS_TOKEN")
         if (token){
