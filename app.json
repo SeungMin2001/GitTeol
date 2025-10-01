@@ -4,7 +4,25 @@
     "plugins": [
       "expo-router"
     ],
-    "name": "gitteol-app",
-    "slug": "gitteol-app"
+    "name": "Gitteol",
+    "slug": "gitteol-app",
+    "icon": "./images/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "icon": "./assets/icon.png",
+      "bundleIdentifier": "com.gitteol.app"
+    },
+    "android": {
+      "icon": "./assets/icon.png",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.gitteol.app"
+    }
   }
 }
