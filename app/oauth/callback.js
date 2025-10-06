@@ -10,8 +10,22 @@
 
     const sendCodeToBackend=async (code)=>{
         const result=await getToken(code)
-        console.log('토큰: ',result.access_token)
-        await SecureStore.setItemAsync("GITHUB_ACCESS_TOKEN",result.access_token)
+        const token=result.access_token
+
+        const response=await fetch('https://api.github.com/user',{
+            headers:{
+                'Authorization': `Bearer ${token}`,
+                'Accept': 'application/vnd.github.v3+json'
+            }
+        })
+        const userData=await response.json()
+
+        console.log('토큰: ',token)
+        console.log('username: ',userData.login)
+
+        await SecureStore.setItemAsync("GITHUB_ACCESS_TOKEN",token)
+        await SecureStore.setItemAsync("USER_NAME",userData.login)
+        
         router.replace('/home')
     }
 
