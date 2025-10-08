@@ -107,18 +107,18 @@ const styles=StyleSheet.create({
     },
 
     tabBar: {
-        backgroundColor:'#0a0a15',
+        backgroundColor:'#000000',
         height: 70,
         paddingBottom: 10,
         paddingTop: 8,
-        borderTopWidth: 0.5,
-        borderTopColor: '#262626',
+        borderTopWidth: 0.3,
+        borderTopColor: '#333333',
     },
 })
 const tabDesign={
     tabBarStyle:styles.tabBar,
-    tabBarActiveTintColor: '#ffffff',
-    tabBarInactiveTintColor: '#8e8e8e',
+    tabBarActiveTintColor: '#fafafa',
+    tabBarInactiveTintColor: '#7a7a7a',
     tabBarLabelStyle: {
         fontSize: 10,
         fontWeight: '600',

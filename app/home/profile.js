@@ -22,7 +22,7 @@ const profile=()=>{
     return (
         <ScrollView style={{
             flex: 1,
-            backgroundColor: '#0a0a15'
+            backgroundColor: '#000000'
         }}>
             {/* 상단 헤더 */}
             <View style={{
@@ -30,18 +30,18 @@ const profile=()=>{
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 paddingHorizontal: 16,
-                paddingTop: 10,
-                paddingBottom: 10,
-                backgroundColor: '#0a0a15',
-                borderBottomWidth: 0.5,
-                borderBottomColor: '#262626'
+                paddingTop: 12,
+                paddingBottom: 12,
+                backgroundColor: '#000000',
+                borderBottomWidth: 0.3,
+                borderBottomColor: '#333333'
             }}>
                 <View style={{flexDirection: 'row', alignItems: 'center', gap: 7}}>
                     <Text style={{
                         fontSize: 20,
                         fontWeight: '600',
-                        color: '#ffffff',
-                        letterSpacing: -0.5
+                        color: '#fafafa',
+                        letterSpacing: -0.3
                     }}>
                         {userData?.login || 'username'}
                     </Text>
@@ -67,225 +67,196 @@ const profile=()=>{
 
             {/* 프로필 정보 섹션 */}
             <View style={{
-                backgroundColor: '#0a0a15',
+                backgroundColor: '#000000',
                 paddingHorizontal: 16,
                 paddingTop: 16,
-                paddingBottom: 20
+                paddingBottom: 16
             }}>
-                {/* 프로필 이미지 & 통계 */}
+                {/* 프로필 카드 */}
                 <View style={{
-                    flexDirection: 'row',
-                    alignItems: 'center',
-                    marginBottom: 16,
-                    paddingHorizontal: 4
+                    backgroundColor: '#0a0a0a',
+                    borderRadius: 20,
+                    padding: 20,
+                    borderWidth: 1,
+                    borderColor: '#1a1a1a',
+                    marginBottom: 12,
+                    shadowColor: '#000',
+                    shadowOffset: { width: 0, height: 4 },
+                    shadowOpacity: 0.3,
+                    shadowRadius: 8
                 }}>
-                    {/* 프로필 이미지 */}
+                    {/* 프로필 이미지 + 통계 (가로 배치) */}
                     <View style={{
-                        marginRight: 28,
-                        alignItems: 'center'
+                        flexDirection: 'row',
+                        alignItems: 'center',
+                        marginBottom: 20
                     }}>
+                        {/* 프로필 이미지 */}
                         <View style={{
-                            width: 95,
-                            height: 95,
-                            borderRadius: 47.5,
-                            padding: 2.5,
-                            borderWidth: 2,
-                            borderColor: '#262626',
+                            width: 105,
+                            height: 105,
+                            borderRadius: 52.5,
+                            padding: 3,
                             justifyContent: 'center',
-                            alignItems: 'center'
+                            alignItems: 'center',
+                            borderWidth: 3,
+                            borderColor: '#667eea',
+                            marginRight: 20
                         }}>
                             <Image
                                 source={{
                                     uri: userData?.avatar_url || 'https://github.com/identicons/default.png'
                                 }}
                                 style={{
-                                    width: 87,
-                                    height: 87,
-                                    borderRadius: 43.5,
+                                    width: 96,
+                                    height: 96,
+                                    borderRadius: 48,
                                     backgroundColor: '#1a1a1a'
                                 }}
                             />
                         </View>
+
+                        {/* 통계 정보 (세로 배치) */}
+                        <View style={{
+                            flex: 1,
+                            gap: 10
+                        }}>
+                            <TouchableOpacity style={{
+                                backgroundColor: '#000000',
+                                paddingVertical: 12,
+                                paddingHorizontal: 16,
+                                borderRadius: 12,
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                borderWidth: 1,
+                                borderColor: '#1a1a1a'
+                            }}>
+                                <Text style={{
+                                    fontSize: 13,
+                                    color: '#888888',
+                                    fontWeight: '600',
+                                    letterSpacing: 0.3,
+                                    textTransform: 'uppercase'
+                                }}>
+                                    팔로워
+                                </Text>
+                                <Text style={{
+                                    fontSize: 20,
+                                    fontWeight: '800',
+                                    color: '#fafafa',
+                                    letterSpacing: -0.6
+                                }}>
+                                    {formatNumber(userData?.followers)}
+                                </Text>
+                            </TouchableOpacity>
+
+                            <TouchableOpacity style={{
+                                backgroundColor: '#000000',
+                                paddingVertical: 12,
+                                paddingHorizontal: 16,
+                                borderRadius: 12,
+                                flexDirection: 'row',
+                                alignItems: 'center',
+                                justifyContent: 'space-between',
+                                borderWidth: 1,
+                                borderColor: '#1a1a1a'
+                            }}>
+                                <Text style={{
+                                    fontSize: 13,
+                                    color: '#888888',
+                                    fontWeight: '600',
+                                    letterSpacing: 0.3,
+                                    textTransform: 'uppercase'
+                                }}>
+                                    팔로잉
+                                </Text>
+                                <Text style={{
+                                    fontSize: 20,
+                                    fontWeight: '800',
+                                    color: '#fafafa',
+                                    letterSpacing: -0.6
+                                }}>
+                                    {formatNumber(userData?.following)}
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
 
-                    {/* 통계 정보 */}
-                    <View style={{
-                        flex: 1,
-                        flexDirection: 'row',
-                        justifyContent: 'space-around',
-                        paddingTop: 4
-                    }}>
-                        <TouchableOpacity style={{
-                            alignItems: 'center',
-                            minWidth: 60
+                    {/* 이름 & 유저네임 */}
+                    <View style={{ marginBottom: 16 }}>
+                        <Text style={{
+                            fontSize: 22,
+                            fontWeight: '800',
+                            color: '#fafafa',
+                            marginBottom: 4,
+                            letterSpacing: -0.6
                         }}>
-                            <Text style={{
-                                fontSize: 20,
-                                fontWeight: '600',
-                                color: '#ffffff',
-                                marginBottom: 4,
-                                letterSpacing: -0.3
-                            }}>
-                                {formatNumber(userData?.public_repos)}
-                            </Text>
-                            <Text style={{
-                                fontSize: 14,
-                                color: '#a8a8a8',
-                                fontWeight: '400',
-                                letterSpacing: -0.1
-                            }}>
-                                게시물
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={{
-                            alignItems: 'center',
-                            minWidth: 60
+                            {userData?.name || userData?.login}
+                        </Text>
+                        <Text style={{
+                            fontSize: 14,
+                            color: '#888888',
+                            fontWeight: '500',
+                            letterSpacing: -0.1
                         }}>
-                            <Text style={{
-                                fontSize: 20,
-                                fontWeight: '600',
-                                color: '#ffffff',
-                                marginBottom: 4,
-                                letterSpacing: -0.3
-                            }}>
-                                {formatNumber(userData?.followers)}
-                            </Text>
-                            <Text style={{
-                                fontSize: 14,
-                                color: '#a8a8a8',
-                                fontWeight: '400',
-                                letterSpacing: -0.1
-                            }}>
-                                팔로워
-                            </Text>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity style={{
-                            alignItems: 'center',
-                            minWidth: 60
-                        }}>
-                            <Text style={{
-                                fontSize: 20,
-                                fontWeight: '600',
-                                color: '#ffffff',
-                                marginBottom: 4,
-                                letterSpacing: -0.3
-                            }}>
-                                {formatNumber(userData?.following)}
-                            </Text>
-                            <Text style={{
-                                fontSize: 14,
-                                color: '#a8a8a8',
-                                fontWeight: '400',
-                                letterSpacing: -0.1
-                            }}>
-                                팔로잉
-                            </Text>
-                        </TouchableOpacity>
+                            @{userData?.login || 'username'}
+                        </Text>
                     </View>
-                </View>
 
-                {/* 이름 & 소개 */}
-                <View style={{paddingHorizontal: 4}}>
-                    <Text style={{
-                        fontSize: 14,
-                        fontWeight: '600',
-                        color: '#ffffff',
-                        marginBottom: 4,
-                        lineHeight: 18,
-                        letterSpacing: -0.2
-                    }}>
-                        {userData?.name || userData?.login}
-                    </Text>
-
+                    {/* 소개 & 추가 정보 */}
                     {userData?.bio && (
                         <Text style={{
                             fontSize: 14,
-                            color: '#ffffff',
-                            lineHeight: 18,
-                            marginBottom: 6,
+                            color: '#d4d4d4',
+                            lineHeight: 20,
+                            marginBottom: 14,
                             letterSpacing: -0.1
                         }}>
                             {userData.bio}
                         </Text>
                     )}
 
-                    {userData?.location && (
+                    {(userData?.location || userData?.blog) && (
                         <View style={{
                             flexDirection: 'row',
                             alignItems: 'center',
-                            marginBottom: 4
+                            gap: 8,
+                            flexWrap: 'wrap'
                         }}>
-                            <Text style={{
-                                fontSize: 14,
-                                color: '#a8a8a8',
-                                lineHeight: 18,
-                                letterSpacing: -0.1
-                            }}>
-                                📍 {userData.location}
-                            </Text>
+                            {userData?.location && (
+                                <Text style={{
+                                    fontSize: 13,
+                                    color: '#aaaaaa',
+                                    letterSpacing: -0.1,
+                                    fontWeight: '500'
+                                }}>
+                                    📍 {userData.location}
+                                </Text>
+                            )}
+
+                            {userData?.blog && (
+                                <TouchableOpacity>
+                                    <Text style={{
+                                        fontSize: 13,
+                                        color: '#5ba3f5',
+                                        letterSpacing: -0.1,
+                                        fontWeight: '600'
+                                    }}>
+                                        🔗 {userData.blog}
+                                    </Text>
+                                </TouchableOpacity>
+                            )}
                         </View>
                     )}
-
-                    {userData?.blog && (
-                        <TouchableOpacity>
-                            <Text style={{
-                                fontSize: 14,
-                                color: '#3897f0',
-                                lineHeight: 18,
-                                textDecorationLine: 'none',
-                                letterSpacing: -0.1,
-                                fontWeight: '500'
-                            }}>
-                                🔗 {userData.blog}
-                            </Text>
-                        </TouchableOpacity>
-                    )}
-                </View>
-
-                {/* 프로필 편집 버튼 */}
-                <View style={{
-                    flexDirection: 'row',
-                    gap: 8,
-                    marginTop: 12,
-                    paddingHorizontal: 4
-                }}>
-                    <TouchableOpacity style={{
-                        flex: 1,
-                        backgroundColor: '#262626',
-                        paddingVertical: 7,
-                        borderRadius: 8,
-                        alignItems: 'center'
-                    }}>
-                        <Text style={{
-                            color: '#ffffff',
-                            fontSize: 14,
-                            fontWeight: '600'
-                        }}>프로필 편집</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity style={{
-                        flex: 1,
-                        backgroundColor: '#262626',
-                        paddingVertical: 7,
-                        borderRadius: 8,
-                        alignItems: 'center'
-                    }}>
-                        <Text style={{
-                            color: '#ffffff',
-                            fontSize: 14,
-                            fontWeight: '600'
-                        }}>프로필 공유</Text>
-                    </TouchableOpacity>
                 </View>
             </View>
 
             {/* 구분선 */}
             <View style={{
-                height: 0.5,
-                backgroundColor: '#262626',
-                marginTop: 16
+                height: 0.3,
+                backgroundColor: '#2a2a2a',
+                marginTop: 18
             }} />
         </ScrollView>
     )

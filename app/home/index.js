@@ -80,29 +80,31 @@ const FeedItem = ({ item }) => {
 
     return (
         <View style={{
-            backgroundColor: '#0a0a15',
+            backgroundColor: '#000000',
             marginBottom: 0,
-            borderBottomWidth: 0.5,
-            borderBottomColor: '#262626'
+            borderBottomWidth: 0.3,
+            borderBottomColor: '#2a2a2a'
         }}>
             {/* 프로필 헤더 */}
             <View style={{
                 flexDirection: 'row',
                 alignItems: 'center',
-                paddingHorizontal: 12,
-                paddingVertical: 10
+                paddingHorizontal: 14,
+                paddingVertical: 12
             }}>
                 {/* 프로필 이미지 */}
                 <View style={{
-                    width: 35,
-                    height: 35,
-                    borderRadius: 17.5,
-                    marginRight: 10,
+                    width: 32,
+                    height: 32,
+                    borderRadius: 16,
+                    marginRight: 12,
                     backgroundColor: '#1a1a1a',
                     justifyContent: 'center',
-                    alignItems: 'center'
+                    alignItems: 'center',
+                    borderWidth: 0.5,
+                    borderColor: '#333333'
                 }}>
-                    <Text style={{fontSize: 14}}>👤</Text>
+                    <Text style={{fontSize: 13}}>👤</Text>
                 </View>
 
                 {/* 사용자 이름 */}
@@ -110,7 +112,8 @@ const FeedItem = ({ item }) => {
                     <Text style={{
                         fontSize: 14,
                         fontWeight: '600',
-                        color: '#ffffff'
+                        color: '#fafafa',
+                        letterSpacing: -0.2
                     }}>
                         {item.userName}
                     </Text>
@@ -118,15 +121,15 @@ const FeedItem = ({ item }) => {
 
                 {/* 더보기 버튼 */}
                 <TouchableOpacity activeOpacity={0.6}>
-                    <Text style={{color: '#ffffff', fontSize: 20, fontWeight: 'bold'}}>⋯</Text>
+                    <Text style={{color: '#fafafa', fontSize: 18, fontWeight: 'bold'}}>⋯</Text>
                 </TouchableOpacity>
             </View>
 
             {/* 피드 이미지 */}
             <View style={{
                 width: '100%',
-                height: 400,
-                backgroundColor: '#1a1a1a'
+                height: 380,
+                backgroundColor: '#0a0a0a'
             }}>
                 <View style={{
                     width: '100%',
@@ -134,13 +137,14 @@ const FeedItem = ({ item }) => {
                     justifyContent: 'center',
                     alignItems: 'center'
                 }}>
-                    <Svg width="80" height="80" viewBox="0 0 24 24" fill="none">
-                        <Path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="#4a4a4a"/>
+                    <Svg width="70" height="70" viewBox="0 0 24 24" fill="none">
+                        <Path d="M21 19V5C21 3.9 20.1 3 19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19ZM8.5 13.5L11 16.51L14.5 12L19 18H5L8.5 13.5Z" fill="#3a3a3a"/>
                     </Svg>
                     <Text style={{
-                        fontSize: 12,
-                        color: '#666',
-                        marginTop: 8
+                        fontSize: 11,
+                        color: '#555555',
+                        marginTop: 10,
+                        fontWeight: '500'
                     }}>
                         피드 이미지 {item.id}
                     </Text>
@@ -151,10 +155,11 @@ const FeedItem = ({ item }) => {
             <View style={{
                 flexDirection: 'row',
                 alignItems: 'center',
-                paddingHorizontal: 12,
-                paddingVertical: 10
+                paddingHorizontal: 14,
+                paddingVertical: 8,
+                paddingTop: 10
             }}>
-                <View style={{flexDirection: 'row', alignItems: 'center', gap: 10}}>
+                <View style={{flexDirection: 'row', alignItems: 'center', gap: 14}}>
                     {/* 별(좋아요) 버튼 + 개수 */}
                     <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
                         <LikeStarIcon
@@ -165,10 +170,10 @@ const FeedItem = ({ item }) => {
                             }}
                         />
                         <Text style={{
-                            fontSize: 14,
+                            fontSize: 13,
                             fontWeight: '600',
-                            color: '#ffffff',
-                            marginTop: 2
+                            color: '#fafafa',
+                            marginTop: 1
                         }}>
                             {item.starCount.toLocaleString()}
                         </Text>
@@ -179,10 +184,10 @@ const FeedItem = ({ item }) => {
                         <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
                             <ForkIcon />
                             <Text style={{
-                                fontSize: 14,
+                                fontSize: 13,
                                 fontWeight: '600',
-                                color: '#ffffff',
-                                marginTop: 2
+                                color: '#fafafa',
+                                marginTop: 1
                             }}>
                                 {item.forkCount}
                             </Text>
@@ -194,10 +199,10 @@ const FeedItem = ({ item }) => {
                         <View style={{flexDirection: 'row', alignItems: 'center', gap: 6}}>
                             <WatchIcon />
                             <Text style={{
-                                fontSize: 14,
+                                fontSize: 13,
                                 fontWeight: '600',
-                                color: '#ffffff',
-                                marginTop: 2
+                                color: '#fafafa',
+                                marginTop: 1
                             }}>
                                 {item.watchCount}
                             </Text>
@@ -208,26 +213,26 @@ const FeedItem = ({ item }) => {
 
             {/* 피드 소개글 */}
             <View style={{
-                paddingHorizontal: 12,
-                paddingBottom: 8,
-                paddingTop: 4
+                paddingHorizontal: 14,
+                paddingBottom: 6,
+                paddingTop: 6
             }}>
                 <Text style={{
-                    fontSize: 14,
-                    color: '#ffffff',
-                    lineHeight: 18
+                    fontSize: 13,
+                    color: '#fafafa',
+                    lineHeight: 17
                 }}>
                     <Text style={{fontWeight: '600'}}>{item.userName}</Text>
-                    <Text style={{color: '#ffffff'}}> {item.description}</Text>
+                    <Text style={{color: '#fafafa'}}> {item.description}</Text>
                 </Text>
             </View>
 
             {/* 시간 표시 */}
             <View style={{
-                paddingHorizontal: 12,
-                paddingBottom: 12
+                paddingHorizontal: 14,
+                paddingBottom: 14
             }}>
-                <Text style={{fontSize: 12, color: '#a8a8a8'}}>
+                <Text style={{fontSize: 11, color: '#8a8a8a', fontWeight: '400'}}>
                     {item.time}
                 </Text>
             </View>
@@ -331,18 +336,18 @@ const homePage=()=>{
 // ----------------------------JSX--------------------------------
 
     return(
-        <View style={{flex:1, backgroundColor: '#0a0a15'}}>
+        <View style={{flex:1, backgroundColor: '#000000'}}>
             {/* 인스타 스타일 헤더 */}
             <View style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
                 alignItems: 'center',
                 paddingHorizontal: 16,
-                paddingTop: 10,
-                paddingBottom: 10,
-                backgroundColor: '#0a0a15',
-                borderBottomWidth: 0.5,
-                borderBottomColor: '#262626'
+                paddingTop: 12,
+                paddingBottom: 12,
+                backgroundColor: '#000000',
+                borderBottomWidth: 0.3,
+                borderBottomColor: '#333333'
             }}>
                 <View style={{flexDirection: 'row', alignItems: 'center', gap: 8}}>
                     <GitTeolLogo />
@@ -398,9 +403,9 @@ const homePage=()=>{
                             <View style={{
                                 padding: 20,
                                 alignItems: 'center',
-                                backgroundColor: '#0a0a15'
+                                backgroundColor: '#000000'
                             }}>
-                                <ActivityIndicator size="small" color="#ffffff" />
+                                <ActivityIndicator size="small" color="#fafafa" />
                             </View>
                         )
                     }
