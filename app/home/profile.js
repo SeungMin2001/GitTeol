@@ -69,38 +69,34 @@ const profile=()=>{
             <View style={{
                 backgroundColor: '#000000',
                 paddingHorizontal: 16,
-                paddingTop: 16,
+                paddingTop: 20,
                 paddingBottom: 16
             }}>
                 {/* 프로필 카드 */}
                 <View style={{
                     backgroundColor: '#0a0a0a',
                     borderRadius: 20,
-                    padding: 20,
-                    borderWidth: 1,
+                    padding: 24,
+                    borderWidth: 0.5,
                     borderColor: '#1a1a1a',
-                    marginBottom: 12,
-                    shadowColor: '#000',
-                    shadowOffset: { width: 0, height: 4 },
-                    shadowOpacity: 0.3,
-                    shadowRadius: 8
+                    marginBottom: 12
                 }}>
                     {/* 프로필 이미지 + 통계 (가로 배치) */}
                     <View style={{
                         flexDirection: 'row',
                         alignItems: 'center',
-                        marginBottom: 20
+                        marginBottom: 24
                     }}>
                         {/* 프로필 이미지 */}
                         <View style={{
-                            width: 105,
-                            height: 105,
-                            borderRadius: 52.5,
+                            width: 140,
+                            height: 140,
+                            borderRadius: 70,
+                            borderWidth: 3,
+                            borderColor: '#ffffff',
                             padding: 3,
                             justifyContent: 'center',
                             alignItems: 'center',
-                            borderWidth: 3,
-                            borderColor: '#667eea',
                             marginRight: 20
                         }}>
                             <Image
@@ -108,9 +104,9 @@ const profile=()=>{
                                     uri: userData?.avatar_url || 'https://github.com/identicons/default.png'
                                 }}
                                 style={{
-                                    width: 96,
-                                    height: 96,
-                                    borderRadius: 48,
+                                    width: 126,
+                                    height: 126,
+                                    borderRadius: 63,
                                     backgroundColor: '#1a1a1a'
                                 }}
                             />
@@ -119,63 +115,61 @@ const profile=()=>{
                         {/* 통계 정보 (세로 배치) */}
                         <View style={{
                             flex: 1,
-                            gap: 10
+                            gap: 12
                         }}>
                             <TouchableOpacity style={{
-                                backgroundColor: '#000000',
-                                paddingVertical: 12,
+                                backgroundColor: '#111111',
+                                paddingVertical: 16,
                                 paddingHorizontal: 16,
                                 borderRadius: 12,
                                 flexDirection: 'row',
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
-                                borderWidth: 1,
-                                borderColor: '#1a1a1a'
+                                borderWidth: 0.5,
+                                borderColor: '#222222'
                             }}>
                                 <Text style={{
                                     fontSize: 13,
                                     color: '#888888',
-                                    fontWeight: '600',
-                                    letterSpacing: 0.3,
-                                    textTransform: 'uppercase'
+                                    fontWeight: '500',
+                                    letterSpacing: -0.2
                                 }}>
                                     팔로워
                                 </Text>
                                 <Text style={{
                                     fontSize: 20,
-                                    fontWeight: '800',
-                                    color: '#fafafa',
-                                    letterSpacing: -0.6
+                                    fontWeight: '700',
+                                    color: '#ffffff',
+                                    letterSpacing: -0.5
                                 }}>
                                     {formatNumber(userData?.followers)}
                                 </Text>
                             </TouchableOpacity>
 
                             <TouchableOpacity style={{
-                                backgroundColor: '#000000',
-                                paddingVertical: 12,
+                                backgroundColor: '#111111',
+                                paddingVertical: 16,
                                 paddingHorizontal: 16,
                                 borderRadius: 12,
                                 flexDirection: 'row',
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
-                                borderWidth: 1,
-                                borderColor: '#1a1a1a'
+                                borderWidth: 0.5,
+                                borderColor: '#222222'
                             }}>
                                 <Text style={{
                                     fontSize: 13,
                                     color: '#888888',
-                                    fontWeight: '600',
-                                    letterSpacing: 0.3,
-                                    textTransform: 'uppercase'
+                                    fontWeight: '500',
+                                    letterSpacing: -0.2
                                 }}>
                                     팔로잉
                                 </Text>
                                 <Text style={{
                                     fontSize: 20,
-                                    fontWeight: '800',
-                                    color: '#fafafa',
-                                    letterSpacing: -0.6
+                                    fontWeight: '700',
+                                    color: '#ffffff',
+                                    letterSpacing: -0.5
                                 }}>
                                     {formatNumber(userData?.following)}
                                 </Text>
@@ -184,11 +178,11 @@ const profile=()=>{
                     </View>
 
                     {/* 이름 & 유저네임 */}
-                    <View style={{ marginBottom: 16 }}>
+                    <View style={{ marginBottom: 20 }}>
                         <Text style={{
                             fontSize: 22,
-                            fontWeight: '800',
-                            color: '#fafafa',
+                            fontWeight: '700',
+                            color: '#ffffff',
                             marginBottom: 4,
                             letterSpacing: -0.6
                         }}>
@@ -197,8 +191,8 @@ const profile=()=>{
                         <Text style={{
                             fontSize: 14,
                             color: '#888888',
-                            fontWeight: '500',
-                            letterSpacing: -0.1
+                            fontWeight: '400',
+                            letterSpacing: -0.2
                         }}>
                             @{userData?.login || 'username'}
                         </Text>
@@ -208,10 +202,10 @@ const profile=()=>{
                     {userData?.bio && (
                         <Text style={{
                             fontSize: 14,
-                            color: '#d4d4d4',
+                            color: '#cccccc',
                             lineHeight: 20,
-                            marginBottom: 14,
-                            letterSpacing: -0.1
+                            marginBottom: 16,
+                            letterSpacing: -0.2
                         }}>
                             {userData.bio}
                         </Text>
@@ -219,17 +213,14 @@ const profile=()=>{
 
                     {(userData?.location || userData?.blog) && (
                         <View style={{
-                            flexDirection: 'row',
-                            alignItems: 'center',
-                            gap: 8,
-                            flexWrap: 'wrap'
+                            gap: 8
                         }}>
                             {userData?.location && (
                                 <Text style={{
                                     fontSize: 13,
-                                    color: '#aaaaaa',
-                                    letterSpacing: -0.1,
-                                    fontWeight: '500'
+                                    color: '#999999',
+                                    letterSpacing: -0.2,
+                                    fontWeight: '400'
                                 }}>
                                     📍 {userData.location}
                                 </Text>
@@ -239,9 +230,9 @@ const profile=()=>{
                                 <TouchableOpacity>
                                     <Text style={{
                                         fontSize: 13,
-                                        color: '#5ba3f5',
-                                        letterSpacing: -0.1,
-                                        fontWeight: '600'
+                                        color: '#ffffff',
+                                        letterSpacing: -0.2,
+                                        fontWeight: '400'
                                     }}>
                                         🔗 {userData.blog}
                                     </Text>
